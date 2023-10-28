@@ -13,9 +13,18 @@ import java.io.IOException;
 public class AdultServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CheckIfAdult checkIfAdult = new CheckIfAdult();
         Integer age = Integer.valueOf(req.getParameter("age"));
-        resp.getWriter().println(checkIfAdult.checkIfAdult(age));
+        resp.getWriter().println(checkIfAdult(age));
+    }
+
+    public String checkIfAdult(int age) {
+        String str = new String();
+        if (age >= 18) {
+            str = "You are adult";
+        } else {
+            str = "You aren't adult";
+        }
+        return str;
     }
 
 
