@@ -25,10 +25,26 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String description = req.getParameter("description");
         System.out.println("Description" + description);
-        Part part = req.getPart("file");
-        String contentDisposition = part.getHeader("content-disposition");
-        System.out.println("Disposition: " + contentDisposition);
-        resp.getWriter().println("File upload");
+        String message = "";
+        try {
+            Part part = req.getPart("file");
+            part.write(getFileName(part));
+            message = "File is uploaded";
+        } catch (Exception ex) {
+            message = "Error: " + ex.getMessage();
+        }
+        resp.getWriter().println(message);
 
+
+    }
+
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        if (!contentDisposition.contains("filename=")) {
+            return null;
+        }
+        int beginIndex = contentDisposition.indexOf("filename=") + 10;
+        int endIndex = contentDisposition.length() - 1;
+        return contentDisposition.substring(beginIndex, endIndex);
     }
 }
