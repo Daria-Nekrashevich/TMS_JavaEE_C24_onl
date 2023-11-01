@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: blueviolet;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: azure;
+}
+
+
+.sidebar {
+    background-color: darkgreen;
+    float: left;
+    width: 15%;
+    height: 140vh;
+    min-height: 120vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: azure;
+
+}
+
+.content {
+    float: right;
+    height: 120vh;
+    min-height: 120vh;
+    width: 75%;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    clear: both;
+    padding: 10px;
+}
